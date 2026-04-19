@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -24,7 +23,13 @@ def health_check():
 
 @app.get("/")
 def index():
-    return FileResponse(static_dir / "index.html")
+    return JSONResponse(
+        content={
+            "message": "Book Metadata and Recommendation API is running",
+            "health": "/health",
+            "docs": "/docs",
+        }
+    )
 
 
 app.include_router(books_router, prefix="/api/v1")
