@@ -161,13 +161,5 @@ Then call protected endpoints with:
 ## API Documentation (PDF requirement)
 - Source pdf: `docs/API_DOCUMENTATION.pdf`
 
-## Pre-Submission Checklist
-- [ ] Public GitHub repository URL added and accessible
-- [ ] Commit history shows incremental progress (not one final commit)
-- [ ] API docs exported to PDF and linked here
-- [ ] Technical report completed (including GenAI declaration + dataset citation)
-- [ ] Slides completed with architecture, docs, and demo evidence
-- [ ] Live demo flow rehearsed (register/login -> CRUD -> recommendations -> analytics)
-
 ## Academic Integrity and GenAI
 Use of GenAI must be declared. See `TECHNICAL_REPORT.pdf` section "Generative AI Declaration" and include conversation log excerpts in supplementary material.
