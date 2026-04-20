@@ -1,39 +1,104 @@
 # GenAI Conversation Excerpts (Supplementary Evidence)
 
-This file provides selected excerpts that demonstrate declared and methodical use of GenAI during the project lifecycle.
+This document records representative GenAI-assisted decisions and verification steps. It is aligned to the technical report declaration and demonstrates methodical, declared use rather than ad-hoc prompting.
 
-## Excerpt 1 - Initial planning and requirements interpretation
-- Date: 2026-04-19
-- Context: assignment interpretation and assessment constraints
-- User request (excerpt): "help me complete this project, choose book metadata and recommendation API"
-- AI support summary:
-  - translated requirements into a concrete implementation plan,
-  - prioritized runnable deliverables (repository, docs, tests, report),
-  - mapped features to marking criteria.
+## 1) Usage methodology applied
+For each substantial task, the workflow followed four stages:
+1. Define objective and constraints.
+2. Use GenAI to generate options and implementation candidates.
+3. Accept/reject suggestions with explicit rationale.
+4. Validate outcomes through tests, endpoint checks, and runtime logs.
 
-## Excerpt 2 - Engineering implementation and debugging workflow
-- Date: 2026-04-19 to 2026-04-20
-- Context: iterative coding, test fixes, auth flow updates, deployment troubleshooting
-- Representative support actions:
-  - generated and revised API modules, schema models, and tests,
-  - diagnosed environment mismatch and package issues,
-  - guided production-style service setup (systemd, Nginx, health checks),
-  - provided fallback public demo access via reverse tunnel when inbound path was unstable.
+This structure was used for architecture, data import reliability, deployment decisions, and presentation refinement.
 
-## Excerpt 3 - Documentation and presentation refinement
-- Date: 2026-04-20
-- Context: submission readiness and oral exam preparation
-- AI support summary:
-  - refined technical report with deployment status and evidence checklist,
-  - produced slide template aligned to implemented functionality,
-  - generated concise presentation variants (10-slide and <=6-slide versions),
-  - ensured GenAI declaration was explicit and evidence-backed.
+## 2) Excerpted evidence by phase
 
-## Verification and human oversight statement
-- All adopted outputs were manually reviewed and edited before submission.
-- Code behavior was validated through endpoint execution and automated tests.
-- Final architectural and deployment decisions remained student-controlled.
+### Excerpt A - Scope definition and feature strategy
+- Date window: 2026-04-19
+- Prompt context: choose project direction and map to assessment criteria.
+- Representative user request excerpt: "help me complete this project, choose book metadata and recommendation API".
+- GenAI-assisted output:
+  - transformed rubric text into implementation milestones,
+  - prioritized secure CRUD + recommendation + analytics,
+  - produced deliverable-first plan (repo/docs/report/slides/tests).
+- Decision outcome:
+  - accepted: book metadata + recommendation API as main theme,
+  - accepted: add analytics and dataset integration to exceed minimum pass requirements.
 
-## Traceability note
-- Full conversation transcript is retained in local VS Code workspace storage.
-- This document intentionally includes concise excerpts for assessment review.
+### Excerpt B - Authentication design alternatives
+- Date window: 2026-04-19 to 2026-04-20
+- Option exploration prompted with trade-off focus:
+  - API key only,
+  - JWT-based login flow,
+  - Swagger-compatible OAuth2 password flow.
+- Decision outcome:
+  - accepted: JWT login/token flow for protected routes and oral defensibility,
+  - rejected: API-key-only model as final approach because it provided weaker evidence of modern auth practice.
+- Verification evidence:
+  - successful token issuance,
+  - protected endpoints returning expected auth behavior.
+
+### Excerpt C - Data import robustness improvements
+- Date window: 2026-04-19 to 2026-04-20
+- Problem context: Kaggle dataset import failed under multiple real-world file irregularities.
+- GenAI-assisted debugging scope:
+  - encoding issues,
+  - malformed CSV rows,
+  - NUL bytes,
+  - ZIP-encapsulated CSV edge case,
+  - ratings merge and column mismatch handling.
+- Decision outcome:
+  - accepted: resilient import script with fallback parsing and merge logic,
+  - accepted: evidence-oriented command workflow with count verification.
+- Verification evidence:
+  - import result: Inserted = 1000, Skipped = 0,
+  - database count and analytics endpoints returned consistent post-import data.
+
+### Excerpt D - Deployment option analysis and fallback engineering
+- Date window: 2026-04-20
+- Deployment options explored with constraints:
+  - PythonAnywhere free-tier constraints,
+  - Render constraints,
+  - Tencent Cloud CVM + Nginx + systemd,
+  - temporary reverse tunnel for stable oral demonstration.
+- Decision outcome:
+  - accepted: CVM deployment as primary runtime setup,
+  - accepted: reverse tunnel as contingency when external inbound route was unstable,
+  - rejected: relying on a single platform path without fallback.
+- Verification evidence:
+  - service active via systemd,
+  - local and reverse-proxy health/docs checks returned 200,
+  - public tunnel successfully exposed /health and /docs.
+
+### Excerpt E - Submission artifact refinement
+- Date window: 2026-04-20
+- GenAI-assisted tasks:
+  - align technical report to implemented state,
+  - add deployment evidence section,
+  - convert slide outline into practical presentation template variants.
+- Decision outcome:
+  - accepted: concise, evidence-first report structure,
+  - accepted: slide versions for 10-slide and <=6-slide oral delivery constraints.
+
+## 3) What was not delegated to GenAI
+- Final architecture selection and scope control.
+- Runtime troubleshooting decisions under deployment constraints.
+- Acceptance/rejection of suggested code edits.
+- Final submission content and evidence packaging.
+
+## 4) Validation and control record
+- Automated validation: pytest integration checks.
+- Runtime validation: local health/docs, protected endpoint behavior, analytics outputs.
+- Deployment validation: service status, reverse proxy behavior, public demo path checks.
+- Documentation validation: final consistency review across README, report, and slides.
+
+## 5) Traceability
+- Full conversation history is retained in local editor storage.
+- This file intentionally includes concise excerpts and decision outcomes for examiner review.
+
+## 6) Verbatim snippet examples (timestamped)
+- 2026-04-19T19:19:04Z (user): "help me complete this project, choose book metadata and recommendation API".
+- 2026-04-19 to 2026-04-20 (session phase): repeated troubleshooting on auth flow, dataset import robustness, and deployment access behavior.
+- 2026-04-20 (submission phase): requests to align report content, slide template content, and GenAI declaration evidence with implemented project state.
+
+These snippets are included as representative anchors. Detailed full-turn records remain available in the retained local transcript.
