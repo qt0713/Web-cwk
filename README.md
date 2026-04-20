@@ -163,3 +163,5 @@ Then call protected endpoints with:
 
 ## Academic Integrity and GenAI
 Use of GenAI must be declared. See `TECHNICAL_REPORT.pdf` section "Generative AI Declaration" and include conversation log excerpts in supplementary material.
+
+Supplementary excerpt file for this project: [docs/GENAI_EXCERPTS.md](docs/GENAI_EXCERPTS.md)
