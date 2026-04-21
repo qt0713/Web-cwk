@@ -125,7 +125,7 @@ python scripts/import_kaggle_books.py --csv-path .\Books.csv --ratings-csv-path 
   ```bash
   uvicorn app.main:app --reload --port 8000
   ```
-2. Open website UI:
+2. Open website (part of health):
   - http://127.0.0.1:8000/
 3. Open API docs:
   - http://127.0.0.1:8000/docs
